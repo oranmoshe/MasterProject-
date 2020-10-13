@@ -40,7 +40,7 @@ manager.onProgress = function ( item, loaded, total ) {
 // particles
 var p_geom = new THREE.Geometry();
 var p_material = new THREE.ParticleBasicMaterial({
-  color: 0xFFFFFF,
+  color: 0x000000,
   size: 1.5
 });
 
