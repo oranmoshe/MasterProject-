@@ -64,16 +64,15 @@
   <script>
 function handleMotionEvent(event) {
 
-    var x = event.rotationRate.x;
-    var y = event.rotationRate.y;
-    var z = event.rotationRate.z;
-    console.log("x " + x,
-      "y " + y,
-      "z " + z)
+    var x = event.accelerationIncludingGravity.x;
+    var y = event.accelerationIncludingGravity.y;
+    var z = event.accelerationIncludingGravity.z;
+    console.log("x " + Math.round(x),
+      "y " + Math.round(y),
+      "z " + Math.round(z))
     // Do something awesome.
 }
 if (window.DeviceMotionEvent) {
-  
   window.addEventListener('devicemotion', handleMotionEvent);
 }
   </script>
