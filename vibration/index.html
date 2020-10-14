@@ -41,13 +41,8 @@
     <p></p>
   </body>
   <script>
-  var vibrate = navigator.vibrate || navigator.mozVibrate;
-
-// vibrate for 1 second
-vibrate(1000);
-
-// vibrate for 1 second, then pause for half, then vibrate for another 1 second
-vibrate([1000, 500, 2000]);
+window.navigator.vibrate(200); // vibrate for 200ms
+window.navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
 
   </script>
 </html>
