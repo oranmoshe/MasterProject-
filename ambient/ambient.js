@@ -21,9 +21,15 @@ if ("AmbientLightSensor" in window) {
   alert("no");
 }
 if ("ondevicelight" in window) {
+    alert("yes");
+
   function onUpdateDeviceLight(event) {
+
     update(event.value);
   }
   
   window.addEventListener("devicelight", onUpdateDeviceLight);
+}
+else{
+  alert("no");
 }
