@@ -64,21 +64,17 @@
   <script>
 function handleMotionEvent(event) {
 
-    var x = event.accelerationIncludingGravity.x;
-    var y = event.accelerationIncludingGravity.y;
-    var z = event.accelerationIncludingGravity.z;
+    var x = event.rotationRate.x;
+    var y = event.rotationRate.y;
+    var z = event.rotationRate.z;
     console.log("x " + x,
       "y " + y,
       "z " + z)
     // Do something awesome.
 }
 if (window.DeviceMotionEvent) {
-    window.addEventListener('deviceorientation', function(event) {
-        console.log(event.alpha + ' : ' + event.beta + ' : ' + event.gamma);
-    });
-}else{
-      console.log("Doesn't supported");
+  
+  window.addEventListener('devicemotion', handleMotionEvent);
 }
   </script>
-}
 </html>
