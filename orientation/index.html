@@ -62,11 +62,18 @@
 <pre class="output"></pre>
   </body>
   <script>
-    function deviceMotionHandler(){
-      console.log("s");
-    }
+function handleMotionEvent(event) {
+
+    var x = event.accelerationIncludingGravity.x;
+    var y = event.accelerationIncludingGravity.y;
+    var z = event.accelerationIncludingGravity.z;
+    console.log("x " + x,
+      "y " + y,
+      "z " + z)
+    // Do something awesome.
+}
 if (window.DeviceMotionEvent) {
-  window.addEventListener('devicemotion', deviceMotionHandler);
+  window.addEventListener('devicemotion', handleMotionEvent);
 }
   </script>
 </html>
