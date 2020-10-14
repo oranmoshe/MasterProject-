@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Ambient Light Sensor</title>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
+    <style>
+      h1{
+        font-size: 80px;
+      }
+      
+      p{
+        font-size: 40px; 
+      }
+      
+      #details{
+        font-size: 40px; 
+        letter-spacing: -1px;
+      }
+      
+      .darkLight{
+          font-family: 'Catamaran', sans-serif;
+          letter-spacing: -4px;
+          text-align: center;
+          color: #8cabd9;
+          background-color: #0a244d;
+
+        }
+
+       .brightLight{
+          font-family: 'Catamaran', sans-serif;
+          letter-spacing: -4px;
+          text-align: center;
+          background-color: #eef4f7;
+          color: #0a244d;
+        }
+    </style>
+  </head>
+  <body class="brightLight">
+    <h1>Vibration</h1>
+    <p></p>
+  </body>
+  <script>
+  var vibrate = navigator.vibrate || navigator.mozVibrate;
+
+// vibrate for 1 second
+vibrate(1000);
+
+// vibrate for 1 second, then pause for half, then vibrate for another 1 second
+vibrate([1000, 500, 2000]);
+
+  </script>
+</html>
