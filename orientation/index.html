@@ -73,7 +73,12 @@ function handleMotionEvent(event) {
     // Do something awesome.
 }
 if (window.DeviceMotionEvent) {
-  window.addEventListener('devicemotion', handleMotionEvent);
+    window.addEventListener('deviceorientation', function(event) {
+        console.log(event.alpha + ' : ' + event.beta + ' : ' + event.gamma);
+    });
+}else{
+      console.log("Doesn't supported");
 }
   </script>
+}
 </html>
