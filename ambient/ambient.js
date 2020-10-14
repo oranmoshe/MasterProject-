@@ -7,6 +7,7 @@ function update(illuminance) {
 }
 
 if ("AmbientLightSensor" in window) {
+  alert("yes");
   try {
     var sensor = new AmbientLightSensor();
     sensor.addEventListener("reading", function (event) {
@@ -16,6 +17,8 @@ if ("AmbientLightSensor" in window) {
   } catch (e) {
     console.error(e);
   }
+}else{
+  alert("no");
 }
 if ("ondevicelight" in window) {
   function onUpdateDeviceLight(event) {
