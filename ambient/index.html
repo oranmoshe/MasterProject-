@@ -1,10 +1,76 @@
 <!DOCTYPE html>
 <html>
-<body>
-<p>Current light intensity is <b id="value">unknown</b>.</p>
+  <head>
+    <meta charset="UTF-8">
+    <title>Ambient Light Sensor</title>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
+    <style>
+      h1{
+        font-size: 80px;
+      }
+      
+      p{
+        font-size: 40px; 
+      }
+      
+      #details{
+        font-size: 40px; 
+        letter-spacing: -1px;
+      }
+      
+      .darkLight{
+          font-family: 'Catamaran', sans-serif;
+          letter-spacing: -4px;
+          text-align: center;
+          color: #8cabd9;
+          background-color: #0a244d;
 
-<div id="box"></div>
+        }
 
-<script type="text/javascript" src="ambient.js"></script>
-</body>
+       .brightLight{
+          font-family: 'Catamaran', sans-serif;
+          letter-spacing: -4px;
+          text-align: center;
+          background-color: #eef4f7;
+          color: #0a244d;
+        }
+    </style>
+  </head>
+  <body class="brightLight">
+    <h1>Ambient Light Sensor</h1>
+    <p>Current Light Levels</p>
+    <div id="details"></div>  
+  </body>
+  <script>
+    const details = document.getElementById("details");
+    
+    // Feature detection
+    if (window.AmbientLightSensor){
+        try{
+          const sensor = new AmbientLightSensor();
+
+          // Detect changes in the light
+          sensor.onreading = () => {
+            details.innerHTML = sensor.illuminance;
+            
+              // Read the light levels in lux 
+              // < 50 is dark room
+              if (sensor.illuminance < 50) {
+                document.body.className = 'darkLight';
+              } else {
+                document.body.className = 'brightLight';
+              }
+          }
+          
+          // Has an error occured?
+          sensor.onerror = event => document.getElementById("details").innerHTML = event.error.message;
+          sensor.start();
+        } catch(err) {
+          details.innerHTML = err.message;
+        }
+    } else {
+      details.innerHTML = 'It looks like your browser doesnt support this feature'; 
+    }
+
+  </script>
 </html>
