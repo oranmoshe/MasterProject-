@@ -16,7 +16,7 @@ const modelParams = {
     iouThreshold: 0.5,      // ioU threshold for non-max suppression
     scoreThreshold: 0.6,    // confidence threshold for predictions.
 }
-startVideo()
+
 function startVideo() {
     handTrack.startVideo(videoCamera).then(function (status) {
         console.log("video started", status);
@@ -82,4 +82,5 @@ function runDetectionImage(img) {
 handTrack.load(modelParams).then(lmodel => {
     // detect objects in the image.
     model = lmodel
+    startVideo();
 });
