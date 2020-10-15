@@ -1,81 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Vanilla Javascript Parallax Library - Rellax.js</title>
+  <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <title>Parallax</title>
-  <style>
-    .overflow {
-      overflow-y: scroll;
-      overflow-x: hidden;
-      border: 1px solid black;
-      width: 400px;
-      height: 400px;
-    }
 
-    .perspective {
-      perspective: 1px;
-      perspective-origin: top left;
-    }
+  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:600,700,900' rel='stylesheet' type='text/css'>
 
-    .preserve {
-      transform-style: preserve-3d;
-    }
+  <!-- Booooooootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
 
-    .parallax {
-      position: absolute;
-      top: 200px;
-      margin-left: 250px;
-      font-size: 24px;
-    }
 
-    .spacer {
-      height: 1000px;
-    }
+  <!-- Styles -->
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
-    .sticky {
-      position: sticky;
-      position: -webkit-sticky;
-    }
-  </style>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+    <![endif]-->
 </head>
+
 <body>
-  <p>This is parallax using perspective on the overflow element. The perspective origin is outside of the scroller so it stays in place while you scroll down and the parallax elements move up.</p>
-  <p>This means to make a parallax element not move it would have to be infinitely far away.</p>
-  <p>&#x25BC; perspective origin (the scroller element)</p>
-  <div class="perspective overflow">
-    <div class="preserve container">
-      <div class="parallax" style="transform: translateZ(-1.2px)">z = -1.2</div>
-      <div class="parallax" style="transform: translateZ(-1.0px)">z = -1.0</div>
-      <div class="parallax" style="transform: translateZ(-0.8px)">z = -0.8</div>
-      <div class="parallax" style="transform: translateZ(-0.6px)">z = -0.6</div>
-      <div class="parallax" style="transform: translateZ(-0.4px)">z = -0.4</div>
-      <div class="parallax" style="transform: translateZ(-0.2px)">z = -0.2</div>
-      <div class="parallax" style="transform: translateZ(0px)">z = 0</div>
-      <div class="spacer"></div>
+  <div class="grid">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-1 col-md-2">
+          <div class="grid-line"></div>
+        </div>
+        <div class="col-md-2">
+          <div class="grid-line"></div>
+        </div>
+        <div class="col-md-2">
+          <div class="grid-line"></div>
+        </div>
+        <div class="col-md-2">
+          <div class="grid-line"></div>
+        </div>
+        <div class="col-md-2">
+          <div class="grid-line" style="margin-right:-30px;border-right:1px solid #ccc"></div>
+        </div>
+      </div>
     </div>
   </div>
-  <p>This is parallax using position sticky. The perspective origin is inside the scroller so it moves up as you scroll down but the sticky parallax elements are stuck so they try to stay in place.</p>
-  <p>To make a parallax element move 1:1 with the scrolling content it would have to be infinitely far away.</p>
-  <p id="marker2" style="position: absolute;">&#x25B2; sticky perspective origin (top of scrolling contents)</p>
-  <div class="overflow" id="overflow2" style="-webkit-overflow-scrolling: touch;">
-    <div class="perspective container">
-      <div class="sticky parallax" style="transform: translateZ(-1.2px)">z = -1.2</div>
-      <div class="sticky parallax" style="transform: translateZ(-1.0px)">z = -1.0</div>
-      <div class="sticky parallax" style="transform: translateZ(-0.8px)">z = -0.8</div>
-      <div class="sticky parallax" style="transform: translateZ(-0.6px)">z = -0.6</div>
-      <div class="sticky parallax" style="transform: translateZ(-0.4px)">z = -0.4</div>
-      <div class="sticky parallax" style="transform: translateZ(-0.2px)">z = -0.2</div>
-      <div class="sticky parallax" style="transform: translateZ(0px)">z = 0</div>
-      <div class="spacer"></div>
-    </div>
-  </div>
+
+
+
+  <main class="main">
+    
+
+    <section class="section san-francisco">
+      <div class="absolute">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-offset-1 col-md-11">
+              <h2 class="rellax" data-rellax-speed="-3" data-rellax-xs-speed="-5" data-rellax-mobile-speed="4"
+                data-rellax-tablet-speed="-3">
+                San Francisco<br>California
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute above">
+        <div class="container">
+          <div class="row">
+
+            <div class="col-md-offset-1 col-md-2">
+              <div class="lg-green rellax" data-rellax-speed="2" data-rellax-xs-speed="1" data-rellax-mobile-speed="2"
+                data-rellax-tablet-speed="2" style="transform: rotate(45deg);">
+              </div>
+              <div class="sm-green rellax" data-rellax-speed="5" data-rellax-xs-speed="3" data-rellax-mobile-speed="4"
+                data-rellax-tablet-speed="5" style="transform: rotate(45deg);">
+              </div>
+            </div>
+
+            <div class="col-md-offset-2 col-md-1">
+              <div class="sm-purple rellax" data-rellax-speed="2" data-rellax-xs-speed="1" data-rellax-mobile-speed="2"
+                data-rellax-tablet-speed="2" style="transform: rotate(45deg);">
+              </div>
+            </div>
+
+            <div class="col-md-offset-3 col-md-1">
+              <div class="xs-green rellax" data-rellax-speed="5" data-rellax-xs-speed="3" data-rellax-mobile-speed="4"
+                data-rellax-tablet-speed="5" style="transform: rotate(45deg);">
+              </div>
+              <div class="md-green rellax" data-rellax-speed="1" data-rellax-xs-speed="1" data-rellax-mobile-speed="2"
+                data-rellax-tablet-speed="2" style="transform: rotate(45deg);">
+              </div>
+            </div>
+
+            <div class="col-md-1">
+              <div class="lg-purple rellax" data-rellax-speed="3" data-rellax-xs-speed="2" data-rellax-mobile-speed="2"
+                data-rellax-tablet-speed="3" style="transform: rotate(45deg);">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="container">
+
+        <div class="row">
+          <div class="col-md-offset-1 col-md-5">
+            <div class="date">
+              Incorporated—<br>
+              1850<br><br>
+              37°47′N 122°25′W
+            </div>
+          </div>
+          <div class="col-md-offset-1 col-md-4">
+            <div class="temp">
+              68°
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- javascript -->
+  <script type="text/javascript" src="rellax.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      overflow2.addEventListener('scroll', function() {
-        document.getElementById('marker2').style.top = (this.offsetTop - this.scrollTop) + 'px';
-      });
+    var rellax = new Rellax('.rellax', {
+      // center: true
+      callback: function (position) {
+        // callback every position change
+        console.log(position);
+      },
+      breakpoints: [576, 768, 1024]
     });
   </script>
+
+
+
 </body>
+
 </html>
