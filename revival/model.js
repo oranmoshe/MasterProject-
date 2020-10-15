@@ -46,7 +46,7 @@ var p_material = new THREE.ParticleBasicMaterial({
 
 // model
 var loader = new THREE.OBJLoader( manager );
-loader.load( 'hand.obj', function ( object ) {
+loader.load( 'head.obj', function ( object ) {
 
   object.traverse( function ( child ) {
 
