@@ -54,7 +54,7 @@ function runDetection() {
 
             var mx = relX * site.Width;
             var my = relY * site.Height;
-            $("#pointer").css("left",mx);
+            $("#pointer").css("right",mx);
             $("#pointer").css("top",my);
 
 
