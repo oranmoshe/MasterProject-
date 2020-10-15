@@ -64,12 +64,12 @@
   <script>
 function handleMotionEvent(event) {
 
-    var x = event.accelerationIncludingGravity.x;
-    var y = event.accelerationIncludingGravity.y;
-    var z = event.accelerationIncludingGravity.z;
-    console.log("x " + Math.round(x*10),
-      "y " + Math.round(y*10),
-      "z " + Math.round(z*10))
+    var x = Math.round(event.accelerationIncludingGravity.x*10);
+    var y = Math.round(event.accelerationIncludingGravity.y*10);
+    var z = Math.round(event.accelerationIncludingGravity.z*10);
+    console.log("x " + x,
+      "y " + y,
+      "z " + z)
     document.getElementsByClassName("ball")[0].style.top = y+"%";
     document.getElementsByClassName("ball")[0].style.left = x+"%";
     // Do something awesome.
