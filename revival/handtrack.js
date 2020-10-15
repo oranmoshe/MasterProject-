@@ -54,12 +54,12 @@ function runDetection() {
 
             var mx = relX * site.Width;
             var my = relY * site.Height;
-            $("#pointer").css("right",mx);
+            $("#pointer").css("left",mx);
             $("#pointer").css("top",my);
 
 
-            mouseX = ( mx - windowHalfX ) / 2;
-            mouseY = ( my - windowHalfY ) / 2;
+            mouseX = (windowHalfX*2)-(( mx - windowHalfX ) / 2);
+            mouseY = (windowHalfY*2)-(( my - windowHalfY ) / 2);
             //Background.camera.position.z = -($(predictions)[0]["bbox"][2]/400)*50+400
 
             console.log("x:" + relX + " y: "+ relY + "scale:" + $(predictions)[0]["bbox"][2])
