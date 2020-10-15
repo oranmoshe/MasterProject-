@@ -64,14 +64,14 @@
   <script>
 function handleMotionEvent(event) {
 
-    var x = Math.round(event.accelerationIncludingGravity.x*10);
-    var y = Math.round(event.accelerationIncludingGravity.y*10);
-    var z = Math.round(event.accelerationIncludingGravity.z*10);
+    var x = Math.round(event.accelerationIncludingGravity.x*5);
+    var y = Math.round(event.accelerationIncludingGravity.y*5);
+    var z = Math.round(event.accelerationIncludingGravity.z*5);
     console.log("x " + x,
       "y " + y,
       "z " + z)
-    document.getElementsByClassName("ball")[0].style.top = y+"%";
-    document.getElementsByClassName("ball")[0].style.left = x+"%";
+    document.getElementsByClassName("ball")[0].style.top = (y+50)+"%";
+    document.getElementsByClassName("ball")[0].style.left = (x+50)+"%";
     // Do something awesome.
 }
 if (window.DeviceMotionEvent) {
