@@ -59,8 +59,6 @@ function runDetection() {
             $("#pointer").css("top",my);
 
 
-            mx = (windowHalfX*2)-mx;
-            my = (windowHalfY*2)-my;
             mouseX = ( mx - windowHalfX ) / 2;
             mouseY = ( my - windowHalfY ) / 2;
             //Background.camera.position.z = -($(predictions)[0]["bbox"][2]/400)*50+400
