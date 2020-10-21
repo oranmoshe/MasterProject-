@@ -1,99 +1,76 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Ambient Light Sensor</title>
-    <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
-    <style>
-      html , body {
-        height: 100%;
-        width: 100%;
-        position: relative;
-      }
-      div {
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        background-size: 100%;
-        height: 100%;
-        width: 100%;
-      }
-      canvas {
-        width: 100vw;
-        height: 100vh;
-          cursor: crosshair;
-          border: 1px solid #000000;
-      }
-      #truth{
-        /*visibility: hidden;*/
-        position: absolute;
-        top: 0px;
-        left: 0px;
-        width: 100vw;
-      }
-    </style>
+    <head>
+        <title>Image drawing</title>
         <script src="jquery/2.1.3/jquery.min.js"></script>
-  </head>
-  <body class="brightLight">
-    <div id="big" style="background-image: url('big.png')"></div>
-    <div id="small" style="background-image: url('small.png')"></div>
-    <div class="container" id="js-container">
-    <canvas class="canvas" id="js-canvas" width="1000" height="1000"></canvas>
-  </div>
-  </body>
-  <script>
-
-
-
-
-
-(function() {
-  'use strict';
-  var canvas = document.getElementById('js-canvas');
-  canvas.style.width = '1000'
-  canvas.style.height = '1000'
-  var isDrawing, lastPoint;
-  var container    = document.getElementById('js-container'),
-      //canvas       = document.getElementById('js-canvas'),
-      canvasWidth  = canvas.width,
-      canvasHeight = canvas.height,
-      ctx          = canvas.getContext('2d'),
-      image        = new Image();
-
-  image.onload = function() {
-    ctx.drawImage(image, 0, 0);
-  };
-  image.src = 'a.png'+ '?' + new Date().getTime();
-
-
-
-
-    
-
+        <style type="text/css">
+            html, body {
+                margin: 0 !important;
+                padding: 0 !important;
+                height: 100%;
+                width: 100%;
+                position: relative;
+              }
+             div {
+                z-index: -1;
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background-size: 100%;
+                height: 100%;
+                width: 100%;
+                background-repeat: no-repeat;
+              }
+              canvas{
+                z-index: 1;
+              }
+        </style>
+    </head>
+    <body>
+        <div id="big" style="background-image: url('big.png')"></div>
+        <div id="small" style="background-image: url('small.png')"></div>
+        <canvas id="canvas" width="200" height="200"></canvas>
+    </body>
+</html>
+<script>
+//Canvas
+var canvas = document.getElementById('canvas');
+ var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  var height= Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+canvas.width = width;
+canvas.height = height;
+var ctx = canvas.getContext('2d');
 //Variables
 var canvasx = $(canvas).offset().left;
 var canvasy = $(canvas).offset().top;
-var last_mousex = 0; var last_mousey = 0;
-var mousex = 0; var mousey = 0;
+var last_mousex = last_mousey = 0;
+var mousex = mousey = 0;
 var mousedown = false;
 var tooltype = 'draw';
+var  image        = new Image();
+
+  image.onload = function() {
+    ctx.drawImage(image, 0, 0, canvas.width, (canvas.width/image.width)*image.height);
+  };
+  image.src = 'truth.png'+ '?' + new Date().getTime();
 
 //Mousedown
-$(canvas).on('mousedown', function(e) {
+$(canvas).on('touchstart', function(e) {
     last_mousex = mousex = parseInt(e.clientX-canvasx);
-  last_mousey = mousey = parseInt(e.clientY-canvasy);
+    last_mousey = mousey = parseInt(e.clientY-canvasy);
     mousedown = true;
 });
 
 //Mouseup
-$(canvas).on('mouseup', function(e) {
+$(canvas).on('touchend', function(e) {
     mousedown = false;
 });
 
 //Mousemove
-$(canvas).on('mousemove', function(e) {
-    mousex = parseInt(e.clientX-canvasx);
-    mousey = parseInt(e.clientY-canvasy);
+$(canvas).on('touchmove', function(e) {
+      var touches = e.originalEvent.changedTouches;
+    mousex = parseInt(touches[0].pageX-canvasx);
+    mousey = parseInt(touches[0].pageY-canvasy);
     if(mousedown) {
         ctx.beginPath();
         if(tooltype=='draw') {
@@ -102,7 +79,8 @@ $(canvas).on('mousemove', function(e) {
             ctx.lineWidth = 3;
         } else {
             ctx.globalCompositeOperation = 'destination-out';
-            ctx.lineWidth = 10;
+            ctx.lineWidth = 50;
+            handlePercentage(50);
         }
         ctx.moveTo(last_mousex,last_mousey);
         ctx.lineTo(mousex,mousey);
@@ -112,28 +90,21 @@ $(canvas).on('mousemove', function(e) {
     last_mousex = mousex;
     last_mousey = mousey;
     //Output
-    $('#output').html('current: '+mousex+', '+mousey+'<br/>last: '+last_mousex+', '+last_mousey+'<br/>mousedown: '+mousedown);
 });
+var sum = 0;
+function handlePercentage(filledInPixels) {
+    sum += filledInPixels || 0;
+    console.log(filledInPixels + '%');
+    if (sum > 2000) {
+      alert("ss");
+    }
+  }
+
 
 //Use draw|erase
-var use_tool = function(tool) {
+use_tool = function(tool) {
     tooltype = tool; //update
 }
-
-use_tool('erase');
-
-
-
-})();
-
-
-
-
-
-
-
-
-
+use_tool('earas');
 
   </script>
-</html>
