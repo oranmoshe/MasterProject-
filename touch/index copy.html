@@ -79,7 +79,8 @@ $(canvas).on('touchmove', function(e) {
             ctx.lineWidth = 3;
         } else {
             ctx.globalCompositeOperation = 'destination-out';
-            ctx.lineWidth = 10;
+            ctx.lineWidth = 50;
+            handlePercentage(50);
         }
         ctx.moveTo(last_mousex,last_mousey);
         ctx.lineTo(mousex,mousey);
@@ -90,6 +91,15 @@ $(canvas).on('touchmove', function(e) {
     last_mousey = mousey;
     //Output
 });
+var sum = 0;
+function handlePercentage(filledInPixels) {
+    sum += filledInPixels || 0;
+    console.log(filledInPixels + '%');
+    if (sum > 2000) {
+      alert("ss");
+    }
+  }
+
 
 //Use draw|erase
 use_tool = function(tool) {
