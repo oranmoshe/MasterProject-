@@ -26,7 +26,8 @@
             
               // Read the light levels in lux 
               // < 50 is dark room
-              if (sensor.illuminance < 50) {
+              console.log(sensor.illuminance);
+              if (sensor.illuminance < 100) {
                 $("img").attr("src","night.png");
               } else {
                 $("img").attr("src","morning.png");
