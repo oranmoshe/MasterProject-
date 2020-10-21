@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Ambient Light Sensor</title>
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
+    <style>
+      html , body {
+        height: 100%;
+        width: 100%;
+        position: relative;
+      }
+      div {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-size: 100%;
+        height: 100%;
+        width: 100%;
+      }
+      canvas {
+        width: 100vw;
+        height: 100vh;
+          cursor: crosshair;
+          border: 1px solid #000000;
+      }
+      #truth{
+        /*visibility: hidden;*/
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100vw;
+      }
+    </style>
+        <script src="jquery/2.1.3/jquery.min.js"></script>
+  </head>
+  <body class="brightLight">
+    <div id="big" style="background-image: url('big.png')"></div>
+    <div id="small" style="background-image: url('small.png')"></div>
+    <div class="container" id="js-container">
+    <canvas class="canvas" id="js-canvas" width="1000" height="1000"></canvas>
+  </div>
+  </body>
+  <script>
+
+
+
+
+
+(function() {
+  'use strict';
+  var canvas = document.getElementById('js-canvas');
+  canvas.style.width = '1000'
+  canvas.style.height = '1000'
+  var isDrawing, lastPoint;
+  var container    = document.getElementById('js-container'),
+      //canvas       = document.getElementById('js-canvas'),
+      canvasWidth  = canvas.width,
+      canvasHeight = canvas.height,
+      ctx          = canvas.getContext('2d'),
+      image        = new Image();
+
+  image.onload = function() {
+    ctx.drawImage(image, 0, 0);
+  };
+  image.src = 'a.png'+ '?' + new Date().getTime();
+
+
+
+
+    
+
+//Variables
+var canvasx = $(canvas).offset().left;
+var canvasy = $(canvas).offset().top;
+var last_mousex = 0; var last_mousey = 0;
+var mousex = 0; var mousey = 0;
+var mousedown = false;
+var tooltype = 'draw';
+
+//Mousedown
+$(canvas).on('mousedown', function(e) {
+    last_mousex = mousex = parseInt(e.clientX-canvasx);
+  last_mousey = mousey = parseInt(e.clientY-canvasy);
+    mousedown = true;
+});
+
+//Mouseup
+$(canvas).on('mouseup', function(e) {
+    mousedown = false;
+});
+
+//Mousemove
+$(canvas).on('mousemove', function(e) {
+    mousex = parseInt(e.clientX-canvasx);
+    mousey = parseInt(e.clientY-canvasy);
+    if(mousedown) {
+        ctx.beginPath();
+        if(tooltype=='draw') {
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 3;
+        } else {
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.lineWidth = 10;
+        }
+        ctx.moveTo(last_mousex,last_mousey);
+        ctx.lineTo(mousex,mousey);
+        ctx.lineJoin = ctx.lineCap = 'round';
+        ctx.stroke();
+    }
+    last_mousex = mousex;
+    last_mousey = mousey;
+    //Output
+    $('#output').html('current: '+mousex+', '+mousey+'<br/>last: '+last_mousex+', '+last_mousey+'<br/>mousedown: '+mousedown);
+});
+
+//Use draw|erase
+var use_tool = function(tool) {
+    tooltype = tool; //update
+}
+
+use_tool('erase');
+
+
+
+})();
+
+
+
+
+
+
+
+
+
+
+  </script>
+</html>
