@@ -47,10 +47,15 @@
 </html>
 
 <script>
+
+$("#big").click(function(){
+    $("#small").fadeIn();
+});
+
 //Canvas
 var canvas = document.getElementById('canvas');
- var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  var height= Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+var height= Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
 canvas.width = width;
 canvas.height = height;
 var ctx = canvas.getContext('2d');
