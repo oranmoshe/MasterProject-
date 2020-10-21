@@ -5,6 +5,10 @@
     <title>Ambient Light Sensor</title>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
     <style>
+      html , body {
+        height: 100%;
+      }
+
       h1{
         font-size: 80px;
       }
@@ -27,18 +31,18 @@
 
         }
 
-       .brightLight{
-          font-family: 'Catamaran', sans-serif;
-          letter-spacing: -4px;
-          text-align: center;
-          background-color: #eef4f7;
-          color: #0a244d;
+        #btn{
+          width: 100vw;
+        }
+        #txt{
+          position: absolute;
+          width: 100%;
         }
     </style>
   </head>
   <body class="brightLight">
-    <h1 id="btn">Vibration</h1>
-    <p></p>
+    <div id="txt">click on the picture </div>
+    <img id="btn" src='comics.png'>
   </body>
   <script>
     document.getElementById("btn").addEventListener("click",function(e){

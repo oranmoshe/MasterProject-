@@ -42,7 +42,9 @@ function toggleVideo() {
     }
 }
 
-
+SwipTrack(10,10, function(swipe){
+    console.log(swipe);
+});
 function runDetection() {
     model.detect(videoCamera).then(predictions => {
         //console.log("Predictions: ", predictions);
@@ -52,18 +54,19 @@ function runDetection() {
             var relX = $(predictions)[0]["bbox"][0] /640 * 1.15;
             var relY = $(predictions)[0]["bbox"][1] /480 * 1.15;
 
-            var mx = relX * site.Width;
-            var my = relY * site.Height;
+            var mx = relX * $(window).width();
+            var my = relY * $(window).height();
             
             $("#pointer").css("left",mx);
             $("#pointer").css("top",my);
+            
+            SwipTrack.update(mx, $(predictions).length);
 
-
-            mouseX = ( mx - windowHalfX ) / 2;
-            mouseY = ( my - windowHalfY ) / 2;
+            mouseX = ( mx - ($(window).width()/2) ) / 2;
+            mouseY = ( my - ($(window).height()/2) ) / 2;
             //Background.camera.position.z = -($(predictions)[0]["bbox"][2]/400)*50+400
 
-            console.log("x:" + relX + " y: "+ relY + "scale:" + $(predictions)[0]["bbox"][2])
+            //console.log("x:" + relX + " y: "+ relY + "scale:" + $(predictions)[0]["bbox"][2])
 
 
 

@@ -1,121 +1,130 @@
 
-var site = site || {};
-site.window = $(window);
-site.document = $(document);
-site.Width = site.window.width();
-site.Height = site.window.height();
-
-var Background = function() {
-
-};
 var mouseX = 0, mouseY = 0;
-var windowHalfX = site.Width / 2;
-var windowHalfY = site.Height / 2;
-Background.headparticle = function() {   
+var doIt = function(name, siteWidth, siteHeight, rotate, left, top){
+  var site = site || {};
+  site.window = $(window);
+  site.Width = siteWidth;
+  site.Height = siteHeight;
 
-if ( !Modernizr.webgl ) {
-  alert('Your browser dosent support WebGL');
-}
+  var Background = function() {
 
-var camera, scene, renderer;
+  };
+  var windowHalfX = site.Width / 2;
+  var windowHalfY = site.Height / 2;
+  Background.headparticle = function() {   
 
-var p;
+  if ( !Modernizr.webgl ) {
+    alert('Your browser dosent support WebGL');
+  }
 
+  var camera, scene, renderer;
 
-
-Background.camera = new THREE.PerspectiveCamera( 35, site.Width / site.Height, 1, 2000 );
-Background.camera.position.z = 300;
-
-// scene
-Background.scene = new THREE.Scene();
-
-// texture
-var manager = new THREE.LoadingManager();
-manager.onProgress = function ( item, loaded, total ) {
-  //console.log('webgl, twice??');
-  //console.log( item, loaded, total );
-};
+  var p;
 
 
-// particles
-var p_geom = new THREE.Geometry();
-var p_material = new THREE.ParticleBasicMaterial({
-  color: 0x000000,
-  size: 1.5
-});
 
-// model
-var loader = new THREE.OBJLoader( manager );
-loader.load( 'head.obj', function ( object ) {
+  Background.camera = new THREE.PerspectiveCamera( 35, site.Width / site.Height, 1, 2000 );
+  Background.camera.position.z = 300;
 
-  object.traverse( function ( child ) {
+  // scene
+  Background.scene = new THREE.Scene();
 
-     if ( child instanceof THREE.Mesh ) {
+  // texture
+  var manager = new THREE.LoadingManager();
+  manager.onProgress = function ( item, loaded, total ) {
+    //console.log('webgl, twice??');
+    //console.log( item, loaded, total );
+  };
 
-        // child.material.map = texture;
 
-        var scale = 8;
-
-        $(child.geometry.vertices).each(function() {
-           p_geom.vertices.push(new THREE.Vector3(this.x * scale, this.y * scale, this.z * scale));
-        })
-     }
+  // particles
+  var p_geom = new THREE.Geometry();
+  var p_material = new THREE.ParticleBasicMaterial({
+    color: 0xffffff,
+    size: 1.5
   });
 
-  Background.scene.add(p)
-});
+  // model
+  var loader = new THREE.OBJLoader( manager );
+  loader.load( 'head.obj', function ( object ) {
 
-p = new THREE.ParticleSystem(
-  p_geom,
-  p_material
-);
+    object.traverse( function ( child ) {
 
-Background.renderer = new THREE.WebGLRenderer({ alpha: true });
-Background.renderer.setSize( site.Width, site.Height );
-Background.renderer.setClearColor(0x000000, 0);
+       if ( child instanceof THREE.Mesh ) {
 
-$('.particlehead').append(Background.renderer.domElement);
-$('.particlehead').on('mousemove', onDocumentMouseMove);
-site.window.on('resize', onWindowResize);
+          // child.material.map = texture;
 
-function onWindowResize() {
-  windowHalfX = site.Width / 2;
-  windowHalfY = site.Height / 2;
-  //console.log(windowHalfX);
+          var scale = 8;
 
-  Background.camera.aspect = site.Width / site.Height;
-  Background.camera.updateProjectionMatrix();
+          $(child.geometry.vertices).each(function() {
+             p_geom.vertices.push(new THREE.Vector3(this.x * scale, this.y * scale, this.z * scale));
+          })
+       }
+    });
 
+    Background.scene.add(p)
+  });
+
+  p = new THREE.ParticleSystem(
+    p_geom,
+    p_material
+  );
+
+  Background.renderer = new THREE.WebGLRenderer({ alpha: true });
   Background.renderer.setSize( site.Width, site.Height );
-}
+  Background.renderer.setClearColor(0x000000, 0);
 
-function onDocumentMouseMove( event ) {
-  // mouseX = ( event.clientX - windowHalfX ) / 2;
-  // mouseY = ( event.clientY - windowHalfY ) / 2;
-}
+  $(name).append(Background.renderer.domElement);
+  $(name).rotate(rotate);
+  $(name).css("left", left);
+  $(name).css("top", top);
+  $(name).on('mousemove', onDocumentMouseMove);
+  site.window.on('resize', onWindowResize);
 
-Background.animate = function() { 
+  function onWindowResize() {
+    windowHalfX = site.Width / 2;
+    windowHalfY = site.Height / 2;
+    //console.log(windowHalfX);
 
-  Background.ticker = TweenMax.ticker;
-  Background.ticker.addEventListener("tick", Background.animate);
+    Background.camera.aspect = site.Width / site.Height;
+    Background.camera.updateProjectionMatrix();
+
+    Background.renderer.setSize( site.Width, site.Height );
+  }
+
+  function onDocumentMouseMove( event ) {
+    // mouseX = ( event.clientX - windowHalfX ) / 2;
+    // mouseY = ( event.clientY - windowHalfY ) / 2;
+  }
+
+  Background.animate = function() { 
+
+    Background.ticker = TweenMax.ticker;
+    Background.ticker.addEventListener("tick", Background.animate);
+
+    render();
+  }
+
+  function render() {
+    Background.camera.position.x += ( (mouseX * .5) - Background.camera.position.x ) * .05;
+    Background.camera.position.y += ( -(mouseY * .5) - Background.camera.position.y ) * .05;
+
+    Background.camera.lookAt( Background.scene.position );
+
+    Background.renderer.render( Background.scene, Background.camera );
+  }
 
   render();
-}
 
-function render() {
-  Background.camera.position.x += ( (mouseX * .5) - Background.camera.position.x ) * .05;
-  Background.camera.position.y += ( -(mouseY * .5) - Background.camera.position.y ) * .05;
+  Background.animate();
+  };
 
-  Background.camera.lookAt( Background.scene.position );
 
-  Background.renderer.render( Background.scene, Background.camera );
-}
+  Background.headparticle();
+  // Our Javascript will go here.
 
-render();
-
-Background.animate();
 };
-
-
-Background.headparticle();
-// Our Javascript will go here.
+doIt('.particlehead1', 300,300, 0, 300, 0);
+doIt('.particlehead2',300,300, 270, 0, 300);
+doIt('.particlehead3',300,300, 90, 600, 300);
+doIt('.particlehead4',300,300, 180, 300, 600);
