@@ -10,6 +10,7 @@
                 height: 100%;
                 width: 100%;
                 position: relative;
+                background-color: black;
               }
              div {
                 z-index: -1;
@@ -95,8 +96,8 @@ var sum = 0;
 function handlePercentage(filledInPixels) {
     sum += filledInPixels || 0;
     console.log(filledInPixels + '%');
-    if (sum > 2000) {
-      alert("ss");
+    if (sum > 1000) {
+      $(canvas).fadeOut(2000);
     }
   }
 
