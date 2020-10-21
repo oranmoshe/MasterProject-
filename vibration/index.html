@@ -61,16 +61,15 @@
           }
       });
    async function demo() {
-       while(true){
-                
-      audio.play();
-      setTimeout(function(){
-        window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500]);
-      },1000); 
-      audio.pause();
-      audio.currentTime = 0;
-      await sleep(7000);
-    }
+       while(true){       
+        audio.play();
+        setTimeout(function(){
+          window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500]);
+        },1000);     
+        await sleep(7000);
+        audio.pause();
+        audio.currentTime = 0;
+      }
   }
 
 function sleep(ms) {
