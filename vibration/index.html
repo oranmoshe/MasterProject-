@@ -47,19 +47,18 @@
 
   </body>
   <script>
-    document.getElementById("btn").addEventListener("click",function(e){
-
     var audio = document.getElementById("audio");
+    document.getElementById("btn").innerText = "please wait";
     audio.addEventListener('loadeddata', function() {
-      if(audio.readyState >= 2) {
-        audio.play();
-        setTimeout(function(){
-          window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]);
-        },1000); 
-      }
+       if(audio.readyState >= 2) {
+          document.getElementById("btn").innerText = "click on the picture ";
+          document.getElementById("btn").addEventListener("click",function(e){
+              audio.play();
+              setTimeout(function(){
+                window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]);
+              },1000); 
+          });
+        }
     });
-
-});
-
   </script>
 </html>
