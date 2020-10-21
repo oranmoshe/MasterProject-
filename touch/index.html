@@ -11,6 +11,7 @@
                 width: 100%;
                 position: relative;
                 background-color: black;
+                z-index: -1;
               }
              div {
                 z-index: -1;
@@ -25,12 +26,23 @@
               canvas{
                 z-index: 1;
               }
+              #logo{
+                display: none;
+                margin: 50% auto;
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                background-image: url('logo.png');
+              }
         </style>
     </head>
     <body>
-        <div id="big" style="background-image: url('big.png')"></div>
-        <div id="small" style="background-image: url('small.png')"></div>
-        <canvas id="canvas" width="200" height="200"></canvas>
+        <section>
+            <div id="big" style="background-image: url('big.png')"></div>
+            <div id="small" style="background-image: url('small.png')"></div>
+            <canvas id="canvas" width="200" height="200"></canvas>
+        </section>
+        <div id="logo"></div>
     </body>
 </html>
 <script>
@@ -97,7 +109,9 @@ function handlePercentage(filledInPixels) {
     sum += filledInPixels || 0;
     console.log(filledInPixels + '%');
     if (sum > 1000) {
-      $(canvas).fadeOut(2000);
+      $('section').fadeOut(5000);
+      
+      setInterval(function(){$('#logo').fadeIn(1500);},4000);
     }
   }
 
