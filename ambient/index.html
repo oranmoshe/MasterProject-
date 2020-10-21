@@ -19,6 +19,8 @@
         <script src="jquery/2.1.3/jquery.min.js"></script>
   </head>
   <body class="brightLight">
+    <div id="night" style="background-image: url('night.png')"></div>
+    <div id="morning" style="background-image: url('morning.png')"></div>
     <div></div>
   </body>
   <script>
@@ -35,9 +37,9 @@
               // < 50 is dark room
               console.log(sensor.illuminance);
               if (sensor.illuminance < 100) {
-                $("div").css("background-image","url('night.png')");
+                $("#night").fadeIn();
               } else {
-                $("div").css("background-image","url('morning.png')");
+                $("#night").fadeOut();
               }
           }
           
