@@ -53,10 +53,13 @@
        if(audio.readyState >= 2) {
           document.getElementById("btn").innerText = "click on the picture ";
           document.getElementById("btn").addEventListener("click",function(e){
-              audio.play();
-              setTimeout(function(){
-                window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]);
-              },1000); 
+              while(true){
+                audio.play();
+                setTimeout(function(){
+                  window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500]);
+                },1000); 
+                audio.stop();
+              }
           });
         }
     });
