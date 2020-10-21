@@ -49,21 +49,32 @@
   <script>
     var audio = document.getElementById("audio");
     document.getElementById("btn").innerText = "please wait";
-    audio.addEventListener('loadeddata', function() {
-       if(audio.readyState >= 2) {
-          document.getElementById("btn").innerText = "click on the picture ";
-          document.getElementById("btn").addEventListener("click",function(e){
-              while(true){
-                audio.play();
-                setTimeout(function(){
-                  window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500]);
-                },1000); 
-                audio.pause();
-                audio.currentTime = 0;
-                setTimeout(function(){},7000);
-              }
-          });
-        }
-    });
+
+      audio.addEventListener('loadeddata', function() {
+         if(audio.readyState >= 2) {
+            document.getElementById("btn").innerText = "click on the picture ";
+            document.getElementById("btn").addEventListener("click",function(e){
+              
+                  demo();
+             
+            });
+          }
+      });
+   async function demo() {
+       while(true){
+                
+      audio.play();
+      setTimeout(function(){
+        window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500]);
+      },1000); 
+      audio.pause();
+      audio.currentTime = 0;
+      await sleep(7000);
+    }
+  }
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
   </script>
 </html>
