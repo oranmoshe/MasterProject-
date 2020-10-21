@@ -51,7 +51,7 @@
 
     var audio = document.getElementById("audio");
     audio.addEventListener('loadeddata', function() {
-      if(obj.readyState >= 2) {
+      if(audio.readyState >= 2) {
         audio.play();
         setTimeout(function(){
           window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]);
