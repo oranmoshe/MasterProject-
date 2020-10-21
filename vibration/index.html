@@ -48,8 +48,15 @@
   </body>
   <script>
     document.getElementById("btn").addEventListener("click",function(e){
-    window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]); 
-    document.getElementById("audio").play();
+
+    var audio = document.getElementById("audio").play();
+    audio.addEventListener('loadeddata', function() {
+      if(obj.readyState >= 2) {
+        audio.play();
+        window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]); 
+      }
+    });
+
 });
 
   </script>
