@@ -43,11 +43,13 @@
   <body class="brightLight">
     <div id="txt">click on the picture </div>
     <img id="btn" src='comics.png'>
+        <audio id="audio" src="Axe Chopping Wood - Sound Effect.mp3" autoplay="false" ></audio>
+
   </body>
   <script>
     document.getElementById("btn").addEventListener("click",function(e){
-window.navigator.vibrate(200); // vibrate for 200ms
-window.navigator.vibrate([100,30,100,30,100,30,200,30,200,30,200,30,100,30,100,30,100]); // Vibrate 'SOS' in Morse.
+    window.navigator.vibrate([100,1600,100,1400,100,1400,100,1500,100,1500,100,1700,100,1500,100,1600,100,2390,100,1530]); 
+    document.getElementById("audio").play();
 });
 
   </script>
