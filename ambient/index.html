@@ -5,41 +5,14 @@
     <title>Ambient Light Sensor</title>
     <link href="https://fonts.googleapis.com/css?family=Catamaran:700" rel="stylesheet">
     <style>
-      h1{
-        font-size: 80px;
+      img {
+        width: 100vw;
       }
-      
-      p{
-        font-size: 40px; 
-      }
-      
-      #details{
-        font-size: 40px; 
-        letter-spacing: -1px;
-      }
-      
-      .darkLight{
-          font-family: 'Catamaran', sans-serif;
-          letter-spacing: -4px;
-          text-align: center;
-          color: #8cabd9;
-          background-color: #0a244d;
-
-        }
-
-       .brightLight{
-          font-family: 'Catamaran', sans-serif;
-          letter-spacing: -4px;
-          text-align: center;
-          background-color: #eef4f7;
-          color: #0a244d;
-        }
     </style>
+        <script src="jquery/2.1.3/jquery.min.js"></script>
   </head>
   <body class="brightLight">
-    <h1>Ambient Light Sensor</h1>
-    <p>Current Light Levels</p>
-    <div id="details"></div>  
+    <img>
   </body>
   <script>
     const details = document.getElementById("details");
@@ -56,9 +29,9 @@
               // Read the light levels in lux 
               // < 50 is dark room
               if (sensor.illuminance < 50) {
-                document.body.className = 'darkLight';
+                $("img").attr("src","night.png");
               } else {
-                document.body.className = 'brightLight';
+                $("img").attr("src","morning.png");
               }
           }
           
@@ -66,10 +39,10 @@
           sensor.onerror = event => document.getElementById("details").innerHTML = event.error.message;
           sensor.start();
         } catch(err) {
-          details.innerHTML = err.message;
+      console.log(err.message);
         }
     } else {
-      details.innerHTML = 'It looks like your browser doesnt support this feature'; 
+      console.log('It looks like your browser doesnt support this feature'); 
     }
 
   </script>
