@@ -56,10 +56,8 @@ $("#big").on('touchstart',function(){
    load();
 });
 function load(){
-     $("#small").fadeIn(1000);
-     setTimeout(function(){
-         $("canvas").fadeIn(1000);
-     },200);
+    $("#small").fadeIn(1000);
+    $("canvas").fadeIn(1000);        
     
     //Canvas
     var canvas = document.getElementById('canvas');
