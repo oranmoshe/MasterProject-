@@ -42,7 +42,7 @@ function toggleVideo() {
     }
 }
 
-SwipTrack(10,10, function(swipe){
+SwipTrack(5,10, function(swipe){
     console.log(swipe);
 });
 function runDetection() {

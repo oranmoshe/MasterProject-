@@ -18,6 +18,7 @@ var SwipTrack = function(swipLength, trashHold, callback){
       console.log("length: " + length);
       if(length>swipLength){
         callback(movement);
+        $('video').fadeIn();
       }
     }
   }

@@ -124,7 +124,8 @@ var doIt = function(name, siteWidth, siteHeight, rotate, left, top){
   // Our Javascript will go here.
 
 };
-doIt('.particlehead1', 300,300, 0, 300, 0);
-doIt('.particlehead2',300,300, 270, 0, 300);
-doIt('.particlehead3',300,300, 90, 600, 300);
-doIt('.particlehead4',300,300, 180, 300, 600);
+var size = 400;
+doIt('.particlehead1', size,size, 0, size, 0);
+doIt('.particlehead2',size,size, 270, 0, size);
+doIt('.particlehead3',size,size, 90, size*2, size);
+doIt('.particlehead4',size,size, 180, size, size*2);
