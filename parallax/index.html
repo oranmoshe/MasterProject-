@@ -13,7 +13,6 @@
   <!-- Booooooootstrap -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
 
-
   <!-- Styles -->
   <link rel="stylesheet" type="text/css" href="css/main.css">
 
@@ -24,109 +23,21 @@
 </head>
 
 <body>
-  <div class="grid">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-offset-1 col-md-2">
-          <div class="grid-line"></div>
-        </div>
-        <div class="col-md-2">
-          <div class="grid-line"></div>
-        </div>
-        <div class="col-md-2">
-          <div class="grid-line"></div>
-        </div>
-        <div class="col-md-2">
-          <div class="grid-line"></div>
-        </div>
-        <div class="col-md-2">
-          <div class="grid-line" style="margin-right:-30px;border-right:1px solid #ccc"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
-
-  <main class="main">
-    
-
-    <section class="section san-francisco">
-      <div class="absolute">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-offset-1 col-md-11">
-              <h2 class="rellax" data-rellax-speed="-3" data-rellax-xs-speed="-5" data-rellax-mobile-speed="4"
-                data-rellax-tablet-speed="-3">
-                San Francisco<br>California
-              </h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="absolute above">
-        <div class="container">
-          <div class="row">
-
-            <div class="col-md-offset-1 col-md-2">
-              <div class="lg-green rellax" data-rellax-speed="2" data-rellax-xs-speed="1" data-rellax-mobile-speed="2"
-                data-rellax-tablet-speed="2" style="transform: rotate(45deg);">
-              </div>
-              <div class="sm-green rellax" data-rellax-speed="5" data-rellax-xs-speed="3" data-rellax-mobile-speed="4"
-                data-rellax-tablet-speed="5" style="transform: rotate(45deg);">
-              </div>
-            </div>
-
-            <div class="col-md-offset-2 col-md-1">
-              <div class="sm-purple rellax" data-rellax-speed="2" data-rellax-xs-speed="1" data-rellax-mobile-speed="2"
-                data-rellax-tablet-speed="2" style="transform: rotate(45deg);">
-              </div>
-            </div>
-
-            <div class="col-md-offset-3 col-md-1">
-              <div class="xs-green rellax" data-rellax-speed="5" data-rellax-xs-speed="3" data-rellax-mobile-speed="4"
-                data-rellax-tablet-speed="5" style="transform: rotate(45deg);">
-              </div>
-              <div class="md-green rellax" data-rellax-speed="1" data-rellax-xs-speed="1" data-rellax-mobile-speed="2"
-                data-rellax-tablet-speed="2" style="transform: rotate(45deg);">
-              </div>
-            </div>
-
-            <div class="col-md-1">
-              <div class="lg-purple rellax" data-rellax-speed="3" data-rellax-xs-speed="2" data-rellax-mobile-speed="2"
-                data-rellax-tablet-speed="3" style="transform: rotate(45deg);">
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-md-offset-1 col-md-5">
-            <div class="date">
-              Incorporated—<br>
-              1850<br><br>
-              37°47′N 122°25′W
-            </div>
-          </div>
-          <div class="col-md-offset-1 col-md-4">
-            <div class="temp">
-              68°
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </section>
-
+  <main style="height: 100vh; overflow-y: hidden; background-color: #666a6f;">
+    <section style="height: 100vh; overflow-y: scroll;">
+        <div class="rellax" style="background-image: url(sun2.png); background-size: 100%; width: 100%; 
+        height: 100%; position: absolute; top: -30%; background-repeat: no-repeat;" data-rellax-speed="-40"></div> 
+        <div class="rellax" style="background-image: url(Forest.png); background-size: 100%; width: 100%; 
+        height: 100%; position: absolute; top: 8%; background-repeat: no-repeat;" data-rellax-speed="-17"></div>  
+        <div class="rellax" style="background-image: url(Mountens.png); background-size: 100%; width: 100%; 
+        height: 100%; position: absolute; top: 15%; background-repeat: no-repeat;" data-rellax-speed="-7"></div> 
+        <div class="rellax" style="background-image: url(Camp.png); background-size: 100%; width: 100%; 
+        height: 100%; position: absolute; top: 20%; background-repeat: no-repeat;" data-rellax-speed="-1"></div>
+        <div class="rellax" style="background-image: url(all.png); background-size: 100%; width: 100%; 
+        height: 100%; position: absolute; top: 0%; background-repeat: no-repeat;" data-rellax-speed="0"></div>
+    </section>               
   </main>
-
 
   <!-- javascript -->
   <script type="text/javascript" src="rellax.min.js"></script>
@@ -139,6 +50,10 @@
       },
       breakpoints: [576, 768, 1024]
     });
+
+
+
+
   </script>
 
 
